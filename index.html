@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Core - Home</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Roboto', sans-serif; color: #333; background: #fff; line-height: 1.6; }
+
+  a { text-decoration: none; color: inherit; }
+  ul { list-style: none; }
+
+  /* ====== NAVBAR ====== */
+  header.site-header {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 72px;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 1000;
+  }
+  .nav-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100%;
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .logo-container { display: flex; align-items: center; gap: 0.5rem; }
+  .logo-img { width: 40px; height: auto; }
+  .logo { font-size: 1.4rem; font-weight: 700; color: #000; }
+
+
+
+  nav.primary {
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav.primary a {
+  color: #000;
+  font-weight: 500;
+  transition: color 0.3s;
+  font-style: bold;
+}
+
+nav.primary a:hover {
+  color:#007bff;
+}
+  /* ====== HERO ====== */
+  .hero {
+    height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    background: url('https://images.unsplash.com/photo-1557683316-973673baf926?auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
+    margin-top: 72px;
+    position: relative;
+  }
+  .hero::after {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 100%; height: 100%; background: rgba(0,0,0,0.4); z-index: 1;
+  }.hero-content {
+      position: relative; 
+      z-index: 2; 
+      text-align: center; 
+      color: #fff; 
+      padding: 0 1rem;
+    }
+    .hero-content h1 { 
+      font-size: 3rem; 
+      margin-bottom: 1rem; 
+    }
+    .hero-content p { 
+      font-size: 1.2rem; 
+      max-width: 600px; 
+      margin: 0 auto 2rem; 
+    }
+
+
+
+   .business-digitized {
+      background-color: #f9fafb;
+      border-left: 4px solid #2563eb;
+      padding: 1.5rem;
+      margin: 2rem 0;
+      color: #1f2937;
+      line-height: 1.7;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
+    }
+
+
+
+
+
+
+    .hero {
+       min-height: 90vh;
+  display: flex;
+  align-items: center;
+  background: radial-gradient(circle at top left, #0f172a, #020617);
+  color: #fff;
+    }
+    .slide{
+      min-height:100vh;
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:64xp;
+ max-width:var(--max);
+    margin:auto;
+    padding:80px 20px;
+    align-items:center;
+
+
+    }
+    .p1{
+      font-style:bold;
+    }
+
+
+
+  .btn { padding: 0.75rem 2rem; background: #007bff; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-size: 1rem; transition: background 0.3s; }
+  .btn:hover { background: #0056b3; }
+
+  /* ====== FEATURES ====== */
+  .features { padding: 4rem 5%; display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; background: #f9f9f9; }
+  .feature { flex: 1 1 280px; max-width: 320px; background: #fff; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); text-align: center; opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease-out, transform 0.6s ease-out; }
+  .feature.show { opacity: 1; transform: translateY(0); }
+  .feature img { width: 100%; border-radius: 8px; margin-bottom: 1rem; }
+  .feature h3 { font-size: 1.5rem; margin-bottom: 0.5rem; color: #222; }
+  .feature p { font-size: 1rem; color: #666; }
+
+  /* ====== CIRCULAR GRAPHS ====== */
+  .stats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 4rem 2%;
+    background:white;
+  }
+  .chart-container {
+    width: clamp(160px, 20vw, 220px);
+    height: clamp(160px, 20vw, 220px);
+    position: relative;
+  }
+  .chart-label {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #000;
+  }
+  .chart-label h2 { font-size: clamp(1.5rem,3vw,2rem); margin: 0; }
+  .chart-label p { font-size: clamp(0.8rem,2vw,1rem); margin: 0; }
+
+  /* ====== CTA & FOOTER ====== */
+  .cta-section { padding: 3rem 5%; text-align: center; }
+  .cta-section h2 { font-size: 2rem; margin-bottom: 1rem; color: #222; }
+  footer.footer { background: #222; color: #ccc; padding: 2rem 5%; text-align: center; }
+  footer.footer .socials a { margin: 0 0.5rem; color: #ccc; font-size: 1.2rem; transition: color 0.3s; }
+  footer.footer .socials a:hover { color: #007bff; }
+
+
+
+
+
+  /* Loader */
+.loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #333;
+      transition: opacity 0.75s, visibility 0.75s;
+      z-index: 999;
+    }
+    .loader--hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+.loader::after {
+      content: "";
+      width: 75px;
+      height: 75px;
+      border: 15px solid #ddd;
+      border-top-color: grey;
+      border-radius: 50%;
+      animation: loading 0.75s ease infinite;
+    }
+
+  @media (max-width: 768px) {
+    .hero-content h1 { font-size: 2rem; }
+    .hero-content p { font-size: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<header class="site-header">
+  <div class="nav-inner">
+    <div class="logo-container">
+      <a href="index.html"><img class="logo-img" src="/Images/Logo.png" alt="Core Logo"></a>
+      <span class="logo">Core</span>
+    </div>
+    <nav class="primary">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Transforming Digital Dreams Into Reality</h1>
+    <p>We combine cutting-edge technology with creative design to deliver exceptional web experiences that elevate your brand.</p>
+    <a href="about.html"><button class="btn">Discover More</button></a>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="feature">
+    <img src="https://www.advisoryexcellence.com/wp-content/uploads/2021/12/E-COMMERCE-PHOTO.jpg" alt="E-Commerce">
+    <h3>E-Commerce</h3>
+    <p>Robust online stores built for scalability and security, designed to boost your sales and enhance user trust.</p>
+  </div>
+  <div class="feature">
+    <img src="https://www.greatlike.com/wp-content/uploads/2020/04/1584082601Web-development-designing-Anvar-Freelancer-1-1.png" alt="Web Design">
+    <h3>Web Design</h3>
+    <p>Dynamic and responsive designs that engage users and adapt seamlessly to any device.</p>
+  </div>
+  <div class="feature">
+    <img src="https://wallpapers.com/images/hd/graphic-design-3011-x-2000-picture-fjrnaqwob94o5iuk.jpg" alt="Graphic Design">
+    <h3>Graphic Design</h3>
+    <p>Creative visuals and branding materials that tell your story and make your events stand out.</p>
+  </div>
+</section>
+
+
+<div class="business-digitized">
+        <a href="services.html"><h2>Your Business Needs to Be Digitized</h2></a>
+        <p> In today’s fast-paced digital world, staying offline means falling behind. Digitizing your business isn’t just an option—it’s a necessity. From streamlining operations and enhancing customer experiences to expanding your reach beyond geographical limits, going digital opens doors to growth and innovation. Whether it’s building a website, integrating automation, or leveraging data analytics, digital tools empower you to make smarter decisions and stay competitive. Don’t wait for the future to catch up—bring your business into the digital age today.  </p>
+      </div>
+    </section>
+
+
+
+<!-- CIRCULAR GRAPHS -->
+<section class="stats">
+  <div class="chart-container">
+    <canvas id="growthChart1"></canvas>
+    <div class="chart-label">
+      <h2>83%</h2>
+      <p>Business Growth</p>
+    </div>
+  </div>
+  <div class="chart-container">
+    <canvas id="growthChart2"></canvas>
+    <div class="chart-label">
+      <h2>75%</h2>
+      <p>Online Presence</p>
+    </div>
+  </div>
+  <div class="chart-container">
+    <canvas id="growthChart3"></canvas>
+    <div class="chart-label">
+      <h2>90%</h2>
+      <p>Customer Engagement</p>
+    </div>
+  </div>
+</section>
+
+
+
+
+ <section class="slide">
+    <div class="slide-media">
+    
+      <img src="/Images/CEO.jpg" alt="DJ Zete behind the decks" class="slide">
+    
+    </div>
+
+
+<div class="business-digitized">
+        <a href="services.html">
+
+
+
+
+
+<h2>Importance of Having Your business on the Web!!</h2>
+<p1>By Jordan Mphahlele, Founder of Core</p1>
+<p>In today’s digital era, establishing an online presence is fundamental for business survival and growth. A robust web presence—which includes a professional website, social media profiles, and search engine visibility—dramatically increases a company’s visibility and brand credibility. According to Spensum, an online presence ensures your business appears in relevant search results and remains accessible 24/7, enabling potential customers to find your products or services at any time regardless of geographic limitations. 
+SPENSUM.COM
+ Likewise, Forbes emphasizes that without a website, many consumers may question your legitimacy, as a polished online platform is often their first impression of your business. 
+Forbes
+ These digital channels serve as modern storefronts, making credibility and trust achievable through professional design, customer reviews, and regular engagement.</p><br>
+
+
+ <p>Conversely, the absence of a web presence can severely handicap a business’s prospects in the modern marketplace. Without being discoverable online, companies miss out on a vast audience of consumers who rely on internet search and reviews before making purchasing decisions—AND MKTG notes that roughly 81 % of consumers research online before buying, meaning businesses without websites risk losing these prospects entirely. 
+AND MKTG
+ Additionally, Forbes data show that most business owners regard online reputation management and review sites as critical, with 97 % citing this importance, and negative online content can erode trust and cost customers. 
+Forbes
+ In sum, not investing in an online presence limits market reach, reduces competitiveness, and undermines credibility, creating strategic disadvantages that can impede long‑term success.</p>
+ <br>
+ </a>
+ </div>
+ 
+</section>
+ 
+ <!-- CTA -->
+<section class="cta-section">
+  <h2>Ready to Get Started?</h2>
+  <a href="contact.html"><button class="btn">Contact Us</button></a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <p>&copy; 2025 Core. All rights reserved.</p>
+  <div class="socials">
+    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+  </div>
+</footer>
+
+<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<script>
+
+// Loader Script
+    window.addEventListener('load', () => {
+      const loader = document.querySelector('.loader');
+      loader.classList.add('loader--hidden');
+      loader.addEventListener('transitionend', () => {
+        document.body.removeChild(loader);
+      });
+    });
+    
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Animate features
+  const features = document.querySelectorAll('.feature');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) { entry.target.classList.add('show'); observer.unobserve(entry.target); }
+    });
+  }, { threshold: 0.2 });
+  features.forEach(f => observer.observe(f));
+  
+  // Circular Graphs
+  const chartData = [
+    {id:'growthChart1', value:83, color:'#00f5ff'},
+    {id:'growthChart2', value:75, color:'#ff6b6b'},
+    {id:'growthChart3', value:90, color:'#ffd93d'}
+  ];
+
+  chartData.forEach(chart => {
+    const ctx = document.getElementById(chart.id);
+    new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        datasets: [{
+          data: [chart.value, 100 - chart.value],
+          backgroundColor: [chart.color, '#1c1c1c'],
+          borderWidth: 0
+        }]
+      },
+      options: {
+        cutout: '75%',
+        animation: { animateRotate: true, duration: 1800, easing: 'easeOutQuart' },
+        plugins: { legend: { display: false }, tooltip: { enabled: false } },
+      }
+    });
+  });
+});
+</script>
+
+</body>
+</html>

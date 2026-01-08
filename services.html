@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Core — Services</title>
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <style>
+    /* RESET */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #f8f9fb;
+      color: #333;
+      line-height: 1.6;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    /* NAVBAR */
+    .site-header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 72px;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(6px);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      z-index: 1000;
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      height: 100%;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 700;
+      font-size: 1.3rem;
+    }
+
+    .logo-img {
+      width: 40px;
+    }
+
+    nav.primary {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    nav.primary a {
+      font-weight: 500;
+      color: #333;
+    }
+
+    nav.primary a:hover {
+      color: #007bff;
+    }
+
+    /* MAIN */
+    main {
+      max-width: 1200px;
+      margin: 120px auto 3rem;
+      padding: 0 1.5rem;
+    }
+
+    main h1 {
+      text-align: center;
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+    }
+
+    main p.lead {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 3rem;
+      color: #666;
+      font-size: 1.1rem;
+    }
+
+    /* SERVICES */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .service {
+      background: #fff;
+      border-radius: 14px;
+      padding: 1.8rem;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .service:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.15);
+    }
+
+    .service i {
+      color: #007bff;
+      margin-bottom: 1rem;
+    }
+
+
+.service img { 
+  width: 100%;
+  max-height: 200px; 
+  object-fit: cover; 
+  border-radius: 8px; 
+  margin: 1rem 0; 
+  }
+
+
+
+
+    .service h2 {
+      margin-bottom: 0.5rem;
+    }
+
+    .service p {
+      color: #555;
+      margin-bottom: 1rem;
+    }
+
+    .service a {
+      color: #007bff;
+      font-weight: 600;
+    }
+
+    /* TRUST SECTION */
+    .trust {
+      margin: 4rem 0;
+      text-align: center;
+    }
+
+    .trust h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+
+.business-digitized {
+      background-color: #f9fafb;
+      border-left: 4px solid #2563eb;
+      padding: 1.5rem;
+      margin: 2rem 0;
+      color: #1f2937;
+      line-height: 1.7;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease;
+    }
+
+
+
+
+    .trust-item i {
+      font-size: 2rem;
+      color: #007bff;
+      margin-bottom: 0.5rem;
+    }
+    
+    /* Loader */
+.loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #333;
+      transition: opacity 0.75s, visibility 0.75s;
+      z-index: 999;
+    }
+    .loader--hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+    .loader::after {
+      content: "";
+      width: 75px;
+      height: 75px;
+      border: 15px solid #ddd;
+      border-top-color: grey;
+      border-radius: 50%;
+      animation: loading 0.75s ease infinite;
+    }
+
+    /* CTA */
+    .cta {
+      background: linear-gradient(135deg, #007bff, #0056d2);
+      color: #fff;
+      padding: 3rem 1.5rem;
+      border-radius: 16px;
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .cta h2 {
+      font-size: 2.2rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .cta a {
+      display: inline-block;
+      margin-top: 1.5rem;
+      background: #fff;
+      color: #007bff;
+      padding: 0.8rem 2.2rem;
+      border-radius: 30px;
+      font-weight: 700;
+    }
+
+    /* FOOTER */
+    .footer {
+      background: #111;
+      color: #bbb;
+      width: 100%;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+    }
+
+    .footer .socials a {
+      margin: 0 0.6rem;
+      font-size: 1.3rem;
+      color: #bbb;
+    }
+
+    .footer .socials a:hover {
+      color: #007bff;
+    }
+
+    @media (max-width: 768px) {
+      main h1 { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="nav-inner">
+    <div class="logo-container">
+      <img src="/Images/Logo.png" class="logo-img" alt="Core Logo">
+      Core
+    </div>
+    <nav class="primary">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <h1>Our Services</h1>
+  <p class="lead">
+    We help businesses grow online through clean design, strong branding, and data-driven SEO strategies.
+  </p>
+
+  <div class="services-grid">
+    <div class="service">
+      <i class="fas fa-code fa-3x"></i>
+      <img src="/Images/Untitled design.png" alt="Web Development">
+      <h2>Web Development</h2>
+      <p>Fast, responsive websites designed to convert visitors into customers.</p>
+      <a href="web.html">Learn More →</a>
+    </div>
+
+    <div class="service">
+      <i class="fas fa-paint-brush fa-3x"></i>
+      <img src="/Images/Untitled design (1).png" alt="Graphic Design">
+      <h2>Graphic Design</h2>
+      <p>Professional branding that communicates trust and credibility.</p>
+      <a href="graphic.html">Learn More →</a>
+    </div>
+
+    <div class="service">
+      <i class="fas fa-search fa-3x"></i>
+      <img src="/Images/Untitled design (2).png" alt="SEO Optimization">
+      <h2>SEO Optimization</h2>
+      <p>Get found on Google and turn searches into paying clients.</p>
+      <a href="SEO.html">Learn More →</a>
+    </div>
+  </div>
+
+
+
+  <section class="trust">
+    <h2>Why Choose Core?</h2>
+<div class="business-digitized">
+        <a href="services.html">
+          <p>We offer </p>
+  
+
+
+
+    <div class="trust-grid">
+      <div class="trust-item">
+        <i class="fas fa-bolt"></i>
+        <p>Fast & modern builds</p>
+      </div>
+      <div class="trust-item">
+        <i class="fas fa-chart-line"></i>
+        <p>Growth-focused strategy</p>
+      </div>
+      <div class="trust-item">
+        <i class="fas fa-handshake"></i>
+        <p>Client-first approach</p>
+      </div>
+    </div>
+  </section>
+
+ 
+</main>
+<script>
+  window.addEventListener('load', () => {
+      const loader = document.querySelector('.loader');
+      loader.classList.add('loader--hidden');
+      loader.addEventListener('transitionend', () => {
+        document.body.removeChild(loader);
+      });
+    });
+    
+  </script>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <p>&copy; 2025 Core. All rights reserved.</p>
+    <div class="socials">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-gmail"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

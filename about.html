@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Core</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Syne:wght@700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+  <style>
+    /* =============================
+       GLOBAL STYLES
+    ============================== */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Roboto', sans-serif; background: #f8f9fb; color: #222; line-height: 1.6; }
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+    a { text-decoration: none; color: inherit; }
+
+    /* =============================
+       HEADER
+    ============================== */
+    header.site-header {
+      width: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 72px;
+      background: #fff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      z-index: 1000;
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      height: 100%;
+      padding: 0 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo-container { display: flex; align-items: center; gap: 0.5rem; }
+    .logo-img { width: 40px; height: auto; }
+    .logo { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 700; }
+
+    nav.primary { display: flex; gap: 1.5rem; }
+    nav.primary a { font-weight: 500; transition: color 0.3s; }
+    nav.primary a:hover { color: #007bff; }
+
+    /* =============================
+       HERO
+    ============================== */
+    main { padding-top: 88px; }
+
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 64px;
+      max-width: 1200px;
+      margin: auto;
+      padding: 80px 20px;
+      align-items: center;
+    }
+
+    .hero-media { position: relative; aspect-ratio: 4/5; border-radius: 16px; overflow: hidden; }
+    .slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 1.2s ease;
+    }
+    .slide.active { opacity: 1; }
+
+    .hero-copy h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(40px, 5vw, 64px);
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+
+    .cta { margin-top: 36px; }
+    .btn {
+      display: inline-block;
+      padding: 14px 26px;
+      border-radius: 999px;
+      font-size: 13px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      border: 1px solid #007bff;
+      color: #007bff;
+      transition: all 0.3s ease;
+    }
+    .btn:hover { background: #007bff; color: #fff; }
+
+    /* Typewriter Effect */
+    #description::after {
+      content: '|';
+      animation: blink 0.7s infinite;
+      margin-left: 2px;
+    }
+    @keyframes blink {
+      0%, 50%, 100% { opacity: 1; }
+      25%, 75% { opacity: 0; }
+    }
+
+    /* =============================
+       FOOTER
+    ============================== */
+    .footer {
+      margin-top: 5rem;
+      background: #111;
+      color: #aaa;
+      text-align: center;
+      padding: 2rem;
+    }
+    .footer .socials a {
+      margin: 0 0.5rem;
+      font-size: 1.3rem;
+      transition: color 0.3s;
+    }
+    .footer .socials a:hover { color: #007bff; }
+
+    /* =============================
+       RESPONSIVE
+    ============================== */
+    @media(max-width:900px){
+      .hero { grid-template-columns: 1fr; }
+      nav.primary { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="nav-inner">
+    <div class="logo-container">
+      <img class="logo-img" src="Logo.png" alt="Core Logo">
+      <span class="logo">Core</span>
+    </div>
+    <nav class="primary">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-media">
+      <img src="Black and Blue Gradient Website Service Flyer (1).png" alt="Slide 1" class="slide active">
+      <img src="Untitled design (3).png" alt="Slide 2" class="slide">
+      <img src="webdude.png" alt="Slide 3" class="slide">
+    </div>
+
+    <div class="hero-copy">
+      <h1>About Core</h1>
+      <p id="description" class="description"></p>
+      <p>Our goal is to not only help but enhance your business as best as we can.</p>
+      <div class="cta">
+        <a href="contact.html" class="btn primary">Get in Touch!!!</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <p>&copy; 2025 Core. All rights reserved.</p>
+  <div class="socials">
+    <a href="https://www.facebook.com/CoreTech"><i class="fab fa-facebook-f"></i></a>
+    <a href="mailto:corefuturetech@gmail.com"><i class="fas fa-envelope"></i></a>
+    <a href="https://www.instagram.com/corefuture_tech/"><i class="fab fa-instagram"></i></a>
+  </div>
+</footer>
+
+<script>
+  /* =============================
+     SLIDESHOW
+  ============================== */
+  const slides = document.querySelectorAll('.slide');
+  let slideIndex = 0;
+
+  setInterval(() => {
+    slides[slideIndex].classList.remove('active');
+    slideIndex = (slideIndex + 1) % slides.length;
+    slides[slideIndex].classList.add('active');
+  }, 5000);
+
+  /* =============================
+     TYPEWRITER EFFECT
+  ============================== */
+  const text = `Core was founded in 2024 by Jordan Mphahlele with a clear mission: to help businesses transition into the digital world and compete in a rapidly evolving online economy.
+
+In South Africa, a significant percentage of businesses still lack an online presence. This limits growth, visibility, and customer trust. Core was created to bridge that gap by providing modern, accessible, and scalable digital solutions.`;
+
+  const description = document.getElementById("description");
+  let typeIndex = 0;
+
+  function type() {
+    if (typeIndex < text.length) {
+      description.innerHTML += text.charAt(typeIndex);
+      typeIndex++;
+      setTimeout(type, 30);
+    }
+  }
+
+  description.innerHTML = "";
+  type();
+</script>
+
+</body>
+</html>
